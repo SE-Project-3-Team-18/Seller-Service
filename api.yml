@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  title: Seller API
+  version: 1.0.0
+  description: Seller API
+host: localhost:5020
+basePath: /api
+schemes:
+  - http
+paths:
+  /signUp:
+    post:
+      summary: Sign up as a seller
+      description: |
+        Sign up as a seller for selling products. This endpoint is used after the user completes the normal authentication sign up from the User-Management Service.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-User-Id
+          type: string
+          required: true
+          description: User ID obtained from the authentication sign up
+        - in: body
+          name: body
+          description: Seller sign up details
+          required: true
+          schema:
+            type: object
+            properties:
+              companyName:
+                type: string
+                description: Name of the company or business
+              phoneNo:
+                type: string
+                description: Phone number of the seller
+              address:
+                type: string
+                description: Address of the seller
+              pinCode:
+                type: string
+                description: Pin code or postal code of the seller's address
+      responses:
+        201:
+          description: Seller signed up successfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: Upgraded to Seller successfully
+        400:
+          description: Bad request, seller already exists or missing required fields
+        500:
+          description: Internal server error
