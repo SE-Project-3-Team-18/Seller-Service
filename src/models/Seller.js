@@ -2,32 +2,32 @@ const mongoose = require('mongoose');
 
 const sellerSchema = new mongoose.Schema({
   userId: {
-    type:String,
+    type: String,
     required: true,
     unique: true,
   },
   phoneNo: {
     type: String,
-    required: true
+    required: true,
   },
   verified: {
     type: Boolean,
-    default: false
+    default: false,
   },
   address: {
     type: String,
-    required: true
+    required: true,
   },
   pinCode: {
     type: String,
-    required: true
+    required: true,
   },
   companyName: {
     type: String,
-    required: true
+    required: true,
   },
 }, {
-  timestamps: true, 
+  timestamps: true,
   toJSON: {
     transform: function(doc, ret) {
       ret.id = ret._id; // Replace _id with id

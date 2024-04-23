@@ -58,3 +58,32 @@ paths:
           description: Bad request, seller already exists or missing required fields
         500:
           description: Internal server error
+  /seller-by-uid/{userId}:
+    get:
+      summary: Get seller ID by user ID
+      description: Retrieve the seller ID associated with a given user ID.
+      tags:
+        - Internal
+      parameters:
+        - in: path
+          name: userId
+          type: string
+          required: true
+          description: User ID to search for associated seller ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Seller found
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: Seller found
+              sellerId:
+                type: string
+                example: 609d4173c585aa001c9d01a2

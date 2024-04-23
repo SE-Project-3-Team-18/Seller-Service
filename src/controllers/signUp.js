@@ -14,7 +14,7 @@ const hitUserManagement = async (userId) => {
       userId,
     })
   } catch (e) {
-    error = null
+    let error = null
     if (axios.isAxiosError(e) === true) {
       if (e.response) {
         error = new CustomError(e.response?.data?.message, e.response?.status, false)

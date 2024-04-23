@@ -10,6 +10,7 @@ const CustomLogger = require('./utils/logger')
 const { errorHandler, CustomError } = require('./utils/error')
 const ServiceRegistryClient = require('./utils/serviceRegistry')
 const signUp = require('./controllers/signUp')
+const getSellerIdByuserId = require('./controllers/getSellerIdByUserId')
 
 const mongoUrl = config.MONGODB_URI
 const connection = mongoose.connection
@@ -57,6 +58,7 @@ app.get('/api', async (req, res, next) => {
 })
 
 app.post('/api/signUp', signUp)
+app.get('/api/seller-by-uid/:userId', getSellerIdByuserId)
 
 app.use('/api', errorHandler)
 
